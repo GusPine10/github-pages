@@ -1,0 +1,119 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Josy 💖</title>
+    <style>
+        body {
+            background-color: #ffebf0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #e63946;
+        }
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #d62839;
+        }
+        .hidden {
+            display: none;
+        }
+        #finalMessage {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e63946;
+        }
+        .hearts {
+            font-size: 30px;
+            animation: float 1s infinite alternate;
+        }
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="amor_de_vago.mp3" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💖 Josy, ¿cuánto me conoces? 💖</h1>
+        <p>Responde estas preguntas y descubre el mensaje especial al final. 😊</p>
+
+        <div id="quiz">
+            <p><strong>1. ¿Dónde nos conocimos?</strong></p>
+            <button onclick="checkAnswer(1, true)">En el trabajo</button>
+            <button onclick="checkAnswer(1, false)">En una fiesta</button>
+
+            <div class="hidden" id="q2">
+                <p><strong>2. ¿Cuál es mi color favorito?</strong></p>
+                <button onclick="checkAnswer(2, false)">Azul</button>
+                <button onclick="checkAnswer(2, true)">Rojo</button>
+            </div>
+
+            <div class="hidden" id="q3">
+                <p><strong>3. ¿Qué siento por ti?</strong></p>
+                <button onclick="showFinal()">Muchísimo amor 💖</button>
+                <button onclick="showFinal()">Un poquito (¡mentira! 😆)</button>
+            </div>
+        </div>
+
+        <div class="hidden" id="final">
+            <h2>JOSY, ¿QUIERES SER MI VALENTÍN? 💘</h2>
+            <button onclick="showLove()">¡SÍ! 💖</button>
+            <button onclick="alert('Oh no 😢, inténtalo otra vez...')">No 😢</button>
+        </div>
+
+        <div id="finalMessage" class="hidden">
+            ¡Sabia que dirias que si Josy!
+            <div class="hearts">💖💖💖</div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+
+        function checkAnswer(question, isCorrect) {
+            if (isCorrect) {
+                document.getElementById("q" + (question + 1)).classList.remove("hidden");
+                currentQuestion++;
+            } else {
+                alert("Oops, intenta de nuevo 😘");
+            }
+        }
+
+        function showFinal() {
+            document.getElementById("quiz").classList.add("hidden");
+            document.getElementById("final").classList.remove("hidden");
+        }
+
+        function showLove() {
+            document.getElementById("final").classList.add("hidden");
+            document.getElementById("finalMessage").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
+
